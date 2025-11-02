@@ -89,9 +89,50 @@ public void shellSort(int[] array) {
 
 
 
-// ------- QUICKSORT -------------
+// ------- MERGESORT ----------------------------------------
+void mergesort(int esq, int dir) {      //funciona dividindo o array pela metade até chegar a subvetores unitários [95 15 42 4 23 16 8 77] --> [95] [15] [42] [4] [23] [16] [8] [77]
+    if (esq < dir) {    //faz Θ(n log n)
+        int meio = (esq + dir) / 2;
+        mergesort(esq, meio);        // ordena metade esquerda
+        mergesort(meio + 1, dir);    // ordena metade direita
+        intercalar(esq, meio, dir);  // une as duas metades ordenadas
+    }
+}
+
+void intercalar(int esq, int meio, int dir) {  //precisa de uma função auxiliar
+    int nEsq = (meio + 1) - esq;
+    int nDir = dir - meio;
+    int[] arrayEsq = new int[nEsq + 1];
+    int[] arrayDir = new int[nDir + 1];
+
+    // Sentinelas (valores máximos para evitar estouro)
+    arrayEsq[nEsq] = arrayDir[nDir] = 0x7FFFFFFF;
+
+    // Copia dados das duas metades
+    for (int iEsq = 0; iEsq < nEsq; iEsq++)
+        arrayEsq[iEsq] = array[esq + iEsq];
+
+    for (int iDir = 0; iDir < nDir; iDir++)
+        arrayDir[iDir] = array[meio + 1 + iDir];
+
+    // Faz a intercalação propriamente dita
+    for (int iEsq = 0, iDir = 0, i = esq; i <= dir; i++) {
+        array[i] = (arrayEsq[iEsq] <= arrayDir[iDir])
+            ? arrayEsq[iEsq++] : arrayDir[iDir++];
+    }
+}
+
+
+	
+// ------- HEAPSORT -----------------------------------------
+
+
+	
+// ------- COUNTING SORT -----------------------------------
+
+	
+
+// ------- RADIXSORT -----------------------------------------
 
 
 
-
-// ------- QUICKSORT -------------
