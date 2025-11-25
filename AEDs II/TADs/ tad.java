@@ -223,3 +223,135 @@ public int remover(int pos) { ... }
 
 // busca de elementos
 
+
+
+
+//----- ARVORE BINARIA  -----------------------------------------------------------------------
+
+    class No {
+    public int elemento;
+    public No esq, dir;
+
+    public No(int elemento){
+        this.elemento = elemento;
+        esq = null;
+        dir = null;
+    }
+        
+}
+
+
+ //   ---- classe arvore ---
+class ArvoreBinaria {
+    private No raiz;
+
+    public ArvoreBinaria() {
+        raiz = null;
+    }
+
+    //------- Metodos Inserir ----------
+    public void inserir(int x) throws Exception {
+        raiz = inserir(x, raiz);
+    }
+
+    
+    private No inserir(int x, No i) throws Exception {
+    
+        if (i == null) {
+            i = new No(x);
+    
+        } else if (x < i.elemento) {
+            i.esq = inserir(x, i.esq);
+    
+        } else if (x > i.elemento) {
+            i.dir = inserir(x, i.dir);
+    
+        } else {
+            throw new Exception("Elemento já existente");
+        }
+    
+        return i;
+    }
+
+    }
+}
+
+
+//------ inserir com passagem de pai -----
+void inserirPai(int x) throws Exception {
+ if (raiz == null) {
+ raiz = new No(x);
+ } else if (x < raiz.elemento) {
+ inserirPai(x, raiz.esq, raiz);
+ } else if (x > raiz.elemento) {
+ inserirPai(x, raiz.dir, raiz);
+ } else {
+ throw new Exception(“Erro!”);
+ }
+ }
+
+void inserirPai(int x, No i, No pai) throws Exception {
+     if (i == null) {
+         If (x < pai.elemento){
+         pai.esq = new No(x);
+     } else {
+         pai.dir = new No(x);
+     }
+     } else if (x < i.elemento) {
+     inserirPai(x, i.esq, i);
+     } else if (x > i.elemento) {
+     inserirPai(x, i.dir, i);
+     } else {
+     throw new Exception(“Erro!”);
+     }
+ }
+
+//------------- VERSAO ITERATIVA --------------
+public void inserirIterativo(int x) throws Exception {
+
+    if (raiz == null) {
+        raiz = new No(x);
+        return;
+    }
+
+    No atual = raiz;
+    No pai = null;
+
+    while (atual != null) {
+        pai = atual;
+
+        if (x < atual.elemento) {
+            atual = atual.esq;
+        } else if (x > atual.elemento) {
+            atual = atual.dir;
+        } else {
+            throw new Exception("Elemento já existente");
+        }
+    }
+
+    if (x < pai.elemento) {
+        pai.esq = new No(x);
+    } else {
+        pai.dir = new No(x);
+    }
+}
+
+//----------ARVORE BINARIA
+class ArvoreBinaria {
+     No raiz;
+     ArvoreBinaria() { raiz = null; }
+     void inserir(int x) { }
+     boolean pesquisar(int x) { }
+     void remover(int x) { }
+     void caminharCentral() { }
+     void caminharPre() { }
+     void caminharPos() { }
+}
+
+
+
+
+
+    
+
+    
