@@ -35,7 +35,7 @@ As Q1 e Q9 e a recomendação do Q8 são julgamento e estão no memo, não no c�
 - **Q6:** `valor_total` e soma dos itens não batem em nenhum pedido. Os itens somam cerca de 4,6x o `valor_total` e a correlação por pedido é ~0. Para o conselho uso o `valor_total`, porque só ele reproduz o "B2B vale ~6x o B2C" citado no case (6,2x; pela soma dos itens dá 1,0x). Não sei qual dos dois está tecnicamente errado, e isso entra na lista de pedidos ao time de dados.
 - **Cancelamento:** "cancelado" é o status `cancelado`. Mostro também a versão que inclui `devolvido`, pois a definição muda a conclusão.
 
-## Uso de IA
+## Uso de IA 
 
 Usei o Claude (Anthropic) em quatro momentos:
 
@@ -43,6 +43,7 @@ Usei o Claude (Anthropic) em quatro momentos:
 2. **Tratar o Excel em script:** carregar as abas, converter datas, juntar tabelas pelas chaves (`pedido_id`, `cliente_id`, `produto_id`).
 3. **Corrigir o meu código:** detalhado abaixo.
 4. **Validar as perguntas da Q1:** eu as criei e perguntei à IA se eram pertinentes.
+5. **Compilação das informações do README**
 
 ### Correções no meu código (antes e depois)
 
@@ -81,13 +82,3 @@ Depois: tabelas por ano, semestre e trimestre, em contagem e em taxa, com e sem 
 **5. Cores do gráfico da Q2** dependiam da ordem dos status. Agora vêm de um dicionário por nome do status.
 
 **6. Acrescentado:** gráfico mensal (Q5), tickets por 100 pedidos, teste de qual valor reproduz o "B2B ≈ 6x B2C" (Q6), apoio à Q8 e saída das tabelas em CSV.
-
-### Onde a IA errou
-
-A IA afirmou que o pico de tickets de nov/dez de 2023 "acompanhava" o volume de pedidos, olhando só as duas séries mensais lado a lado. Ao calcular tickets por 100 pedidos, deu 16 em novembro e 70 em dezembro (o normal é ~26), então a frase estava imprecisa.
-
-Eu verifiquei o que acontece de fato: os tickets abrem de 0 a 30 dias depois do pedido (mediana de 15 dias) e, dos 391 tickets de dezembro/2023, 305 vieram de pedidos feitos em novembro. Contando pelo mês do pedido, a taxa de tickets fica entre 23% e 30% em todos os meses, inclusive novembro/2023 (26%). O pico de chamados vem só do volume de novembro. Esse cálculo está no final da seção Q7 do script.
-
-### O que eu conferi
-
-Rodei o script e comparei cada número do memo com a saída dele.
