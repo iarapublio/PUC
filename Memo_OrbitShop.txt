@@ -2,18 +2,18 @@ Memo: por que os números de cancelamento divergem na OrbitShop
 Para: Helena Vasconcelos | De: Iara
 
 Q1. Perguntas antes de olhar os dados
-1. [pergunta 1, uma frase]
-2. [pergunta 2, uma frase]
-3. [pergunta 3, uma frase]
+1. Quais períodos exatos cada relatório está comparando?
+2. Oque cada relatório considera como cancelamento?
+3. O cancelamento está sendo medido por quantidade de pedidos ou em valor em dinheiro?
 
-O que encontrei. Camila e Rogério provavelmente medem coisas diferentes. A taxa anual de cancelamento ficou praticamente estável (16,8% em 2023, 17,1% em 2024), mas a contagem de cancelados caiu 20%, porque os pedidos caíram de 8.386 para 6.614. Não reproduzi os dois números; o do Rogério lembra T2/24 (18,2%) contra T4/24 (16,5%).
+O que foi encontrado: Camila e Rogério provavelmente medem coisas diferentes. A taxa anual de cancelamento ficou pratcamente estável (16,8% em 2023, 17,1% em 2024), mas a contagem de cancelados caiu 20%, porque os pedidos caíram de 8.386 para 6.614. 
 
 O problema está no canal paid_search: cancela 30,7% dos pedidos, contra cerca de 12% nos outros, com ticket e mix B2B parecidos. O pico de novembro de 2023 (2.317 pedidos, 4x o normal) gerou o pico de chamados de nov/dez e não se repetiu; pelo mês do pedido, a taxa de tickets é ~26% em todos os meses. A DeltaFornece tem nota 2,3, mas a mesma taxa de tickets dos outros fornecedores (~26%): não explica o pico.
 
-Sobre os valores: o valor_total e a soma dos itens não batem em nenhum dos 14.921 pedidos comparados (os itens somam 4,6x). Levaria o valor_total ao conselho, pois só ele reproduz o B2B ≈ 6x o B2C citado pela Helena (6,2x; pelos itens, 1,0x).
+Sobre os valores: o valor_total e a soma dos itens não batem em nenhum dos 14.921 pedidos comparados (os itens somam 4,6x). Levaria o valor_total ao conselho, pois só ele reproduz o B2B ≈ 6x o B2C citado pela Helena (6,2x, pelos itens, 1,0x).
 
 Recomendação. Reduzir o investimento em paid_search e auditar as campanhas antes de retomar. O canal gera cerca de 745 cancelamentos acima da taxa dos outros canais (~R$ 2 mi). O custo: menos volume nesse canal até entender a causa.
 
-O que falta. Não sei por que paid_search cancela mais nem qual valor está certo. Pediria ao time de dados o motivo de cada cancelamento e a origem do valor_total.
+O que falta: Não sei por que paid_search cancela mais nem qual valor está certo. Pediria ao time de dados o motivo de cada cancelamento e a origem do valor_total.
 
-Uso de IA. Usei o Claude para entender o case, aprender a tratar o Excel em script e validar as perguntas da Q1, que eu criei. Ele corrigiu meu código: eu aplicava o desconto duas vezes (o preco_praticado já vem com desconto) e havia números e conclusões escritos antes do resultado (antes/depois no README). A IA errou ao dizer que o pico de tickets “acompanhava” os pedidos sem calcular a taxa por pedido; calculei e ele vem dos pedidos de novembro. Rodei o script e conferi os números.
+Uso de IA: (detalhado mais extensivamente no README) Usei o Claude para entender o case, aprender a tratar o Excel em script e validar as perguntas da Q1, que eu criei. Ele corrigiu meu código: eu aplicava o desconto duas vezes (o preco_praticado já vem com desconto) e havia números e conclusões escritos antes do resultado. A IA errou ao dizer que o pico de tickets “acompanhava” os pedidos sem calcular a taxa por pedido; calculei e ele vem dos pedidos de novembro. Rodei o script e conferi os números.
